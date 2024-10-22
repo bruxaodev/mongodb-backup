@@ -1,0 +1,10 @@
+services:
+  mongo-dump:
+    build: .
+    container_name: mongo-dump
+    working_dir: /app
+    volumes:
+      - /mnt/3tb/mongo-backup:/app/data
+      - ./.env:/app/.env
+      - ./dbs.json:/app/dbs.json
+    restart: always
