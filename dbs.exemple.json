@@ -1,0 +1,10 @@
+[
+    {
+        "uri": "mongodb://UserName:password@localhost:27017/?directConnection=true&authSource=admin",
+        "dbs": [
+            "db1",
+            "db2",
+            "project1"
+        ]
+    }
+]
