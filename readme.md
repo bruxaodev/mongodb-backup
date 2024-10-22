@@ -29,3 +29,10 @@ npm run app
 ```sh
 .\mongorestore.exe --db databaseName --uri "mongodb://username:password@localhost:27017/?directConnection=true&authSource=admin" --archive=.\databaseName.gzip --gzip
 ```
+
+# WITH DOCKER
+
+
+```sh
+docker compose up
+```
