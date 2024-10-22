@@ -2,13 +2,16 @@ import { spawn } from 'child_process'
 import { readFileSync, existsSync, mkdirSync } from 'fs'
 
 async function handleDbs() {
-    const pathDate = `./data/${getDate()}`
-    if (!existsSync(pathDate)) {
-        mkdirSync(pathDate)
-    }
+    const dateStr = getDate()
+
 
     const dbs = JSON.parse(readFileSync('dbs.json', 'utf-8'))
     for (const db of dbs) {
+        const pathDate = `./data/${db.hostName}/${dateStr}`
+        if (!existsSync(pathDate)) {
+            mkdirSync(pathDate, { recursive: true })
+        }
+
         for (const dbName of db.dbs) {
             await backupDb(dbName, db.uri, pathDate)
         }
@@ -19,7 +22,7 @@ async function handleDbs() {
 async function backupDb(dbName: string, uri: string, pathDate: string): Promise<void> {
     return new Promise((resolve, reject) => {
         const pathDb = `${pathDate}/${dbName}.gzip`
-        if (existsSync(pathDb)) resolve(console.log(`db ${dbName} already exists`))
+        if (existsSync(pathDb)) return resolve(console.log(`db ${dbName} backup already exists`))
 
         const child = spawn('mongodump', [
             `--db=${dbName}`,

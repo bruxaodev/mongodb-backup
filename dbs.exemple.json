@@ -1,6 +1,7 @@
 [
     {
         "uri": "mongodb://UserName:password@localhost:27017/?directConnection=true&authSource=admin",
+        "hostName": "localhost-27017",
         "dbs": [
             "db1",
             "db2",
