@@ -1,5 +1,6 @@
 import { spawn } from 'child_process'
 import { readFileSync, existsSync, mkdirSync } from 'fs'
+import cron from 'node-cron'
 
 async function handleDbs() {
     const dateStr = getDate()
@@ -52,4 +53,5 @@ function getDate(): string {
     return `${day}-${month}-${year}`;
 }
 
+cron.schedule('0 0 * * *', () => handleDbs())
 handleDbs()

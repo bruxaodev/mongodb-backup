@@ -12,6 +12,10 @@
   "license": "ISC",
   "devDependencies": {
     "@tsconfig/node20": "^20.1.4",
-    "@types/node": "^22.7.8"
+    "@types/node": "^22.7.8",
+    "@types/node-cron": "^3.0.11"
+  },
+  "dependencies": {
+    "node-cron": "^3.0.3"
   }
 }
